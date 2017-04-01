@@ -23,6 +23,8 @@ void Elevator::update()
 	states[floor] = empty;
 
 	int count = 0;
+
+	// Count the number of nonempty floors left in this direction
 	for (int i = floor; direction == up? i < states.size():i >= 0; direction == down? i--:i++)
 	{
 		if (states[i] != empty)
@@ -54,7 +56,7 @@ void Elevator::update()
 	}
 }
 
-void Elevator::pushedCalledButton(int floor)
+void Elevator::request(int floor)
 {
 	states.resize(floor + 1);
 	states[floor] = called;

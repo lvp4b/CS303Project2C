@@ -5,7 +5,7 @@
 int main()
 {
 	Elevator elevator;
-	elevator.pushedCalledButton(3);
+	elevator.request(3);
 	while(true)
 	{
 		elevator.update();
