@@ -10,6 +10,7 @@ enum State { empty, called};
 class Elevator
 {
 public:
+	explicit Elevator(int floors);
 	// Updates this elevator
 	void update();
 

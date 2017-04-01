@@ -1,6 +1,10 @@
 #include "Elevator.h"
 
 
+Elevator::Elevator(int floors) : states(floors)
+{
+}
+
 void Elevator::update()
 {
 	if (direction == up)
@@ -58,7 +62,20 @@ void Elevator::update()
 
 void Elevator::request(int floor)
 {
-	states.resize(floor + 1);
 	states[floor] = called;
+
+	if (direction != none)
+	{
+		return;
+	}
+
+	if (this->floor > floor)
+	{
+		direction = down;
+	}
+	else if (this->floor < floor)
+	{
+		direction = up;
+	}
 }
 
