@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 // Represents a direction
-enum Direction { up, down, none };
+enum Direction { none, up, down };
 
 // Represents the state of a floor
 enum State { empty, called};
