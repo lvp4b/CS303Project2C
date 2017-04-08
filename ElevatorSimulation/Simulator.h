@@ -10,6 +10,6 @@ public:
 
 private:
 	void draw(Elevator& elevator, int time);
-	std::vector< std::vector<User> > users;
+	std::vector<std::vector<User>> floors;
 };
 
