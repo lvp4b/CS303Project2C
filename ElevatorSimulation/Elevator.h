@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+
 // Represents a direction
 enum Direction { none, up, down };
 
@@ -11,11 +12,15 @@ class Elevator
 {
 public:
 	explicit Elevator(int floors);
+
 	// Updates this elevator
 	void update();
 
 	// Request this elevator to visit the specified floor
 	void request(int floor);
+
+	// Checks if the doors are open
+	bool isDoorOpen() const { return states[floor] == called; }
 
 	// Get the current floor
 	int getFloor() const { return floor; }

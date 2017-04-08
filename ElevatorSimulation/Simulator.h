@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "MultiElevator.h"
 #include "User.h"
 
 class Simulator
@@ -9,7 +10,7 @@ public:
 	void simulates();
 
 private:
-	void draw(Elevator& elevator, int time);
+	void draw(MultiElevator& elevators, int time);
 	std::vector<std::vector<User>> floors;
 };
 

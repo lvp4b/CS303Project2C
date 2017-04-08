@@ -1,12 +1,13 @@
 #include "Elevator.h"
 
 
-Elevator::Elevator(int floors) : states(floors)
+Elevator::Elevator(int floors) : floor(0), direction(none), states(floors)
 {
 }
 
 void Elevator::update()
 {
+	states[floor] = empty;
 	if (direction == up)
 	{
 		floor++;
@@ -24,9 +25,8 @@ void Elevator::update()
 	{
 		return;
 	}
-	states[floor] = empty;
 
-	int count = 0;
+	int count = -1;
 
 	// Count the number of nonempty floors left in this direction
 	for (int i = floor; direction == up? i < states.size():i >= 0; direction == down? i--:i++)
@@ -42,6 +42,7 @@ void Elevator::update()
 		return;
 	}
 
+	count = -1;
 	for (int i = 0; i < states.size(); i++)
 	{
 		if (states[i] != empty)

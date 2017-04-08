@@ -2,6 +2,7 @@
 #include "Elevator.h"
 #include "User.h"
 #include <iostream>
+#include "MultiElevator.h"
 using namespace std;
 
 const int FLOORS = 25;
@@ -10,24 +11,23 @@ Simulator::Simulator() : floors(FLOORS)
 {
 }
 
-void Simulator::draw(Elevator& elevator, int time)
+void Simulator::draw(MultiElevator& elevators, int time)
 {
-	if (elevator.getDirection() == none)
-	{
-		return;
-	}
-
 	for (int i = FLOORS - 1; i >= 0; i--)
 	{
-		if (i == elevator.getFloor())
+		for (int j = 0; j != elevators.size(); j++)
 		{
-			cout << "# " << (elevator.getDirection() == up ? "/\\" :
-				elevator.getDirection() == down ? "\\/" : "  ") <<
-				" # ";
-		}
-		else
-		{
-			cout << "|    | ";
+			Elevator& elevator = elevators[j];
+			if (i == elevator.getFloor())
+			{
+				cout << "# " << (elevator.getDirection() == up ? "/\\" :
+					elevator.getDirection() == down ? "\\/" : "  ") <<
+					" # ";
+			}
+			else
+			{
+				cout << "|    | ";
+			}
 		}
 
 		for (User user : floors[i])
@@ -47,7 +47,7 @@ void Simulator::draw(Elevator& elevator, int time)
 
 void Simulator::simulates()
 {
-	Elevator elevator(FLOORS);
+	MultiElevator elevators(FLOORS, 6);
 
 	int time = 0;
 	srand(1924859067);
@@ -82,34 +82,42 @@ void Simulator::simulates()
 			floors[user.getStartingFloor()].push_back(user);
 			cout << "Add user to floor " << user.getStartingFloor() << " to " << user.getEndingFloor() << endl;
 			
-			elevator.request(user.getStartingFloor());
+			elevators.request(user.getStartingFloor());
 		}
 
 		time++;
 
-		vector<User> floor = floors[elevator.getFloor()];
-		floors[elevator.getFloor()] = vector<User>();
-
-		for (auto user = floor.begin(); user != floor.end(); ++user)
+		for (int i = 0; i != elevators.size(); i++)
 		{
-			user->onOpenElevator(elevator, time);
-			if (user->isInElevator())
+			Elevator& elevator = elevators[i];
+
+			if (!elevator.isDoorOpen())
 			{
-				floors[user->getEndingFloor()].push_back(*user);
-				cout << "User's on" << endl;
+				continue;
 			}
-			else
+
+			vector<User> floor = floors[elevator.getFloor()];
+			floors[elevator.getFloor()] = vector<User>();
+
+			for (auto user = floor.begin(); user != floor.end(); ++user)
 			{
-				cout << user->getWaitTime() << endl;
-				cout << "User's off" << endl;
+				user->onOpenElevator(elevator, time);
+				if (user->isInElevator())
+				{
+					floors[user->getEndingFloor()].push_back(*user);
+					cout << "User's on" << endl;
+				}
+				else
+				{
+					cout << user->getWaitTime() << endl;
+					cout << "User's off" << endl;
+				}
 			}
 		}
 
-		elevator.update();
+		elevators.update();
 		
-		draw(elevator, time);
-		if (elevator.getDirection() != none) {
-			system("PAUSE");
-		}
+		draw(elevators, time);
+		system("PAUSE");
 	}
 }

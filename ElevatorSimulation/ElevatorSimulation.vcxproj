@@ -111,12 +111,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Elevator.cpp" />
+    <ClCompile Include="MultiElevator.cpp" />
     <ClCompile Include="Simulator.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Elevator.h" />
+    <ClInclude Include="MultiElevator.h" />
     <ClInclude Include="Simulator.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
