@@ -1,11 +1,12 @@
 #include "Simulator.h"
 #include "Elevator.h"
 #include "User.h"
-#include <iostream>
 #include "MultiElevator.h"
+#include "Stats.h"
+#include <iostream>
 using namespace std;
 
-const int FLOORS = 25;
+const int FLOORS = 8;
 
 Simulator::Simulator() : floors(FLOORS)
 {
@@ -47,14 +48,16 @@ void Simulator::draw(MultiElevator& elevators, int time)
 
 void Simulator::simulates()
 {
-	MultiElevator elevators(FLOORS, 6);
+	MultiElevator elevators(FLOORS, 8);
+	Stats stats;
 
 	int time = 0;
 	srand(1924859067);
 
-	while (true)
+	stats.start();
+	while (time < 10000)
 	{
-		if(rand() % 4 == 0)
+		if(rand() % 10 == 0)
 		{
 			int startingFloor;
 			int requestedFloor;
@@ -80,7 +83,6 @@ void Simulator::simulates()
 			}
 			User user(startingFloor, requestedFloor, time);
 			floors[user.getStartingFloor()].push_back(user);
-			cout << "Add user to floor " << user.getStartingFloor() << " to " << user.getEndingFloor() << endl;
 			
 			elevators.request(user.getStartingFloor());
 		}
@@ -105,19 +107,19 @@ void Simulator::simulates()
 				if (user->isInElevator())
 				{
 					floors[user->getEndingFloor()].push_back(*user);
-					cout << "User's on" << endl;
 				}
 				else
 				{
-					cout << user->getWaitTime() << endl;
-					cout << "User's off" << endl;
+					stats.add(*user);
 				}
 			}
 		}
 
 		elevators.update();
 		
-		draw(elevators, time);
-		system("PAUSE");
+		/*draw(elevators, time);*/
+		//system("PAUSE");
 	}
+	stats.end();
+	system("PAUSE");
 }

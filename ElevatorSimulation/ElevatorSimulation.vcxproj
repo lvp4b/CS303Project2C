@@ -114,12 +114,14 @@
     <ClCompile Include="MultiElevator.cpp" />
     <ClCompile Include="Simulator.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stats.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Elevator.h" />
     <ClInclude Include="MultiElevator.h" />
     <ClInclude Include="Simulator.h" />
+    <ClInclude Include="Stats.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
