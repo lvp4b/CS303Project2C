@@ -1,3 +1,9 @@
+// Lia Vang
+// lvp4b@mail.umkc.edu
+// CS 303
+// April 9, 2017
+// Project 2C
+
 #include <iostream>
 #include <string>
 #include "Simulator.h"
