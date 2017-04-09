@@ -7,10 +7,12 @@
 
 using namespace std;
 
-Simulator::Simulator(int floors, int elevators, int probability) : floors(floors), elevators(floors, elevators)
+Simulator::Simulator(int floors, int elevators, int probability, int maxTicks) : elevators(floors, elevators)
 {
+	this->floors = vector<vector<User>>(floors);
 	tick = 0;
 	this->probability = probability;
+	this->maxTicks = maxTicks;
 }
 
 void Simulator::simulate()
@@ -18,7 +20,7 @@ void Simulator::simulate()
 	stats.start();
 
 	tick = 0;
-	while (tick < 10000)
+	while (tick < maxTicks)
 	{
 		checkNewUser();
 		tick++;

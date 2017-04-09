@@ -7,7 +7,7 @@
 class Simulator
 {
 public:
-	Simulator(int floors, int elevators, int probability);
+	Simulator(int floors, int elevators, int probability, int maxTicks);
 
 	void simulate();
 
@@ -19,4 +19,5 @@ private:
 	MultiElevator elevators;
 	Stats stats;
 	int probability;
+	int maxTicks;
 };
