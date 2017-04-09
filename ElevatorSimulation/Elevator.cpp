@@ -30,7 +30,7 @@ void Elevator::update()
 	int count = -1;
 
 	// Counts the number of nonempty floors left in this direction
-	for (int i = floor; direction == up ? i < states.size() : i >= 0; direction == down ? i-- : i++)
+	for (int i = floor; direction == up ? i != states.size() : i >= 0; direction == down ? i-- : i++)
 	{
 		if (states[i] != empty)
 		{
@@ -46,7 +46,7 @@ void Elevator::update()
 
 	// Counts how many floors are left to visit
 	count = -1;
-	for (int i = 0; i < states.size(); i++)
+	for (int i = 0; i != states.size(); i++)
 	{
 		if (states[i] != empty)
 		{

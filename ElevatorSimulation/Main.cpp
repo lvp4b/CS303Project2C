@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "Simulator.h"
-#include <ctime>
 
 using namespace std;
 
@@ -28,9 +27,6 @@ int prompt(string question)
 
 int main()
 {
-	// Seed random number generator
-	srand(time(nullptr));
-
 	int floors = prompt("How many floors?");
 	int elevators = prompt("How many elevators?");
 	int probability = prompt("What is the probability 1 in ___ of creating a new user per tick?");
