@@ -1,5 +1,6 @@
 #include "Stats.h"
 #include <iostream>
+
 using namespace std;
 
 Stats::Stats()
@@ -16,12 +17,12 @@ void Stats::start()
 
 void Stats::add(const User& user)
 {
-	//cout << user.getStartingFloor() << "\t" << user.getEndingFloor() << "\t\t" << user.getWaitTime() << endl;
+	cout << user.getStartingFloor() << "\t" << user.getEndingFloor() << "\t\t" << user.getWaitTime() << endl;
 	sum += user.getWaitTime();
 	count++;
 }
 
 void Stats::end() const
 {
-	cout << "Average time per person: " << static_cast<double>(sum * 1000 / count) / 1000 << endl;
+	cout << "Average time per person: " << sum / count << endl;
 }

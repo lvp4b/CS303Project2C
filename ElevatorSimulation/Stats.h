@@ -5,11 +5,14 @@ class Stats
 {
 public:
 	Stats();
+
 	void start();
+
 	void add(const User& user);
+
 	void end() const;
+
 private:
-	int sum;
+	double sum;
 	int count;
 };
-

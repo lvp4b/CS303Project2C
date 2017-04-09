@@ -5,13 +5,17 @@ class User
 {
 public:
 	User(int startFloor, int requestedFloor, int time);
+
 	int getWaitTime() const { return waitTime; }
+
 	void onOpenElevator(Elevator& elevator, int time);
+
 	int getStartingFloor() const { return startFloor; }
+
 	int getEndingFloor() const { return requestedFloor; }
+
 	bool isInElevator() const { return elevator != nullptr; }
 
-	int getStartTime() const { return startTime; } // TODO:: DELETE ME
 private:
 	int waitTime;
 	int startTime;
@@ -19,4 +23,3 @@ private:
 	int requestedFloor;
 	Elevator* elevator;
 };
-

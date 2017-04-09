@@ -1,16 +1,22 @@
 #pragma once
 #include <vector>
-#include "MultiElevator.h"
 #include "User.h"
+#include "MultiElevator.h"
+#include "Stats.h"
 
 class Simulator
 {
 public:
-	Simulator();
-	void simulates();
+	Simulator(int floors, int elevators, int probability);
+
+	void simulate();
 
 private:
-	void draw(MultiElevator& elevators, int time);
+	void checkNewUser();
+	void updateFloors();
 	std::vector<std::vector<User>> floors;
+	int tick;
+	MultiElevator elevators;
+	Stats stats;
+	int probability;
 };
-

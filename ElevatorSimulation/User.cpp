@@ -1,7 +1,6 @@
 #include "User.h"
 
-
-User::User(int startFloor, int requestedFloor, int time)
+User::User(int startFloor, int requestedFloor, int time): waitTime(0)
 {
 	this->startFloor = startFloor;
 	this->requestedFloor = requestedFloor;
@@ -11,7 +10,7 @@ User::User(int startFloor, int requestedFloor, int time)
 
 void User::onOpenElevator(Elevator& elevator, int time)
 {
-	if(this->elevator == nullptr)
+	if (this->elevator == nullptr)
 	{
 		if (elevator.getFloor() == startFloor)
 		{

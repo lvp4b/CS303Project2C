@@ -20,12 +20,11 @@ void MultiElevator::update()
 void MultiElevator::request(int floor)
 {
 	Elevator* best_elevator = &elevators[0];
-	int best_score = 0x7FFFFFFF;
-
+	int best_score = INT_MAX;
 	for (int i = 0; i != elevators.size(); i++)
 	{
 		Elevator& elevator = elevators[i];
-		int score = 0x7FFFFFFF;
+		int score = INT_MAX;
 
 		if (elevator.getDirection() == none)
 		{

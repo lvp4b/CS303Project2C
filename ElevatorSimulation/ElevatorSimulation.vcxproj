@@ -117,7 +117,7 @@
     <ClCompile Include="Elevator.cpp" />
     <ClCompile Include="MultiElevator.cpp" />
     <ClCompile Include="Simulator.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Stats.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
