@@ -11,8 +11,9 @@ Stats::Stats()
 
 void Stats::start()
 {
-	cout << "Pick up\t" << "Destination\t" << "Time" << endl;
-	cout << "-----------------------------------------------------------" << endl;
+	cout << endl;
+	cout << "Start\t" << "Destination\t" << "Time" << endl;
+	cout << "----------------------------" << endl;
 }
 
 void Stats::add(const User& user)

@@ -5,27 +5,28 @@
 enum Direction { none, up, down };
 
 // Represents the state of a floor
-enum State { empty, called};
+enum State { empty, called };
 
 // Represents an elevator
 class Elevator
 {
 public:
+	// Instantiates a new elevator with the specified number of floors
 	explicit Elevator(int floors);
 
-	// Updates this elevator
+	// Updates this elevator's state
 	void update();
 
-	// Request this elevator to visit the specified floor
+	// Requests that this elevator visits the specified floor
 	void request(int floor);
 
 	// Checks if the doors are open
 	bool isDoorOpen() const { return states[floor] == called; }
 
-	// Get the current floor
+	// Gets the current floor
 	int getFloor() const { return floor; }
 
-	// Get the direction of travel of this elevator
+	// Gets the direction of travel of this elevator
 	Direction getDirection() const { return direction; }
 
 private:
