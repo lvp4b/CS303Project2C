@@ -2,7 +2,7 @@
 
 MultiElevator::MultiElevator(int floors, int elevators)
 {
-	for(int i = 0; i != elevators; i++)
+	for (int i = 0; i != elevators; i++)
 	{
 		this->elevators.push_back(Elevator(floors));
 	}
@@ -10,7 +10,8 @@ MultiElevator::MultiElevator(int floors, int elevators)
 
 void MultiElevator::update()
 {
-	for (int i = 0; i != elevators.size(); i++)
+	#pragma omp parallel for
+	for (int i = 0; i < static_cast<int>(elevators.size()); i++)
 	{
 		elevators[i].update();
 	}

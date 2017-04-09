@@ -115,6 +115,7 @@ void Simulator::simulates()
 			}
 		}
 
+		// done in parallel
 		elevators.update();
 		
 		/*draw(elevators, time);*/
